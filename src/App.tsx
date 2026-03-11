@@ -694,48 +694,48 @@ const SkillsSection = () => {
 
 const experienceData = [
   {
-    year: '2022',
-    period: '2022 – 2026',
-    type: 'EDUCATION',
-    title: 'B.Tech Computer\nScience & Engineering',
-    org: 'SOA University, Bhubaneswar',
+    year: '2023',
+    period: '2023',
+    type: 'FOUNDATIONS',
+    title: 'Java & Computer\nScience Foundations',
+    org: 'Problem Solving & Logic',
     description:
-      'Pursuing a degree in Computer Science with a strong focus on AI systems, full-stack engineering, and distributed software. Academic work has been complemented by hands-on product development and applied research projects.',
-    tags: ['Python', 'React', 'AI/ML', 'Systems Design'],
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
+      'Gained a solid understanding of object-oriented programming with Java. Covered core Data Structures & Algorithms, including arrays, linked lists, stacks, queues, and recursion, honing initial problem-solving skills.',
+    tags: ['Java', 'Algorithms', 'Data Structures', 'Problem Solving'],
+    image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=800',
   },
   {
     year: '2024',
     period: '2024',
-    type: 'RESEARCH',
-    title: 'AI Systems Research\n& Development',
-    org: 'Independent & Open Source',
+    type: 'WEB DEV',
+    title: 'Full-Stack\nWeb Development',
+    org: 'MERN Stack Applications',
     description:
-      'Worked on language-model workflows, RAG evaluation, and practical tooling around vector search and model experimentation. This work sharpened both research discipline and production-oriented implementation skills.',
-    tags: ['LangChain', 'PyTorch', 'Pinecone', 'FastAPI'],
+      'Mastered modern web development. Transitioned from the basics of HTML, CSS, and JavaScript, into building complete, functional web applications leveraging React.js, Node.js, Express, and MongoDB.',
+    tags: ['React.js', 'Node.js', 'Express', 'MongoDB'],
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    year: '2025',
+    period: '2025',
+    type: 'AI SYSTEMS',
+    title: 'Python &\nAI Systems',
+    org: 'LLM Applications',
+    description:
+      'Pivoted focus toward backend systems and artificial intelligence. Built applications based on Retrieval-Augmented Generation (RAG) using Python, vector databases, embeddings, and semantic search systems.',
+    tags: ['Python', 'RAG', 'Vector DB', 'Semantic Search'],
     image: 'https://images.unsplash.com/photo-1620712948343-0056911f12ba?auto=format&fit=crop&q=80&w=800',
   },
   {
-    year: '2023',
-    period: '2023',
-    type: 'SYSTEMS',
-    title: 'IoT Systems\nDevelopment',
-    org: 'University Labs, SOA',
+    year: '2026',
+    period: '2026',
+    type: 'ENGINEERING',
+    title: 'LLM Systems\nEngineering',
+    org: 'Agentic Workflows',
     description:
-      'Designed and implemented a sensor-based monitoring system with real-time ingestion, dashboarding, and alerting. The project required careful work across hardware integration, messaging pipelines, and data visibility.',
-    tags: ['ESP32', 'MQTT', 'Node.js', 'InfluxDB'],
-    image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    year: '2023',
-    period: '2023',
-    type: 'FINALIST',
-    title: 'Smart India\nHackathon Finalist',
-    org: 'Government of India',
-    description:
-      'Reached the national finals with an AI-assisted traffic management concept built around computer vision and adaptive control. The project combined practical civic impact with strong technical execution under time constraints.',
-    tags: ['YOLOv8', 'Computer Vision', 'Python', 'OpenCV'],
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800',
+      'Focusing exclusively on productionizing AI pipelines. Architecting sophisticated LLM applications and constructing robust autonomous agentic workflows designed for scale and complexity.',
+    tags: ['LLMs', 'Agentic Workflows', 'Architecture', 'AI Engineering'],
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
   },
 ];
 
@@ -990,19 +990,13 @@ const ContactSection = () => {
             </div>
 
             <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 tracking-tight leading-tight">
-              Contact<br />us
+              Get in<br />touch
             </h2>
             <p className="text-gray-600 text-[17px] max-w-sm leading-relaxed mb-16">
-              We are always looking for ways to improve our products and services. Contact us and let us know how we can help you.
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Drop me a message!
             </p>
 
-            <div className="flex flex-row flex-wrap items-center gap-6 text-[13px] text-gray-700 font-medium">
-              <div>abhijeet.soren@gmail.com</div>
-              <div className="w-1 h-1 rounded-full bg-gray-300 hidden md:block" />
-              <div>github.com/abhijeet-soren</div>
-              <div className="w-1 h-1 rounded-full bg-gray-300 hidden md:block" />
-              <div>linkedin.com/in/abhijeet-soren</div>
-            </div>
+
 
             {/* Globe */}
             <div className="mt-4 md:-mt-4 w-full flex justify-start -ml-8 pointer-events-none select-none">
@@ -1075,9 +1069,9 @@ const Footer = () => (
       <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <span className="text-xs font-bold uppercase tracking-widest text-gray-600">© 2026 ABHIJEET SOREN. DESIGNED AND BUILT WITH INTENT.</span>
         <div className="flex gap-4">
-          <a href="https://github.com/abhijeet-soren" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-white transition-colors"><Github size={16} /></a>
-          <a href="https://linkedin.com/in/abhijeet-soren" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-white transition-colors"><Linkedin size={16} /></a>
-          <a href="mailto:abhijeet.soren@gmail.com" className="text-gray-600 hover:text-white transition-colors"><Mail size={16} /></a>
+          <a href="https://github.com/Abhijxxt14" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-white transition-colors"><Github size={16} /></a>
+          <a href="https://linkedin.com/in/abhijeet-soren-a7654b2b5" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-white transition-colors"><Linkedin size={16} /></a>
+          <a href="mailto:abhijeetsoren222@gmail.com" className="text-gray-600 hover:text-white transition-colors"><Mail size={16} /></a>
         </div>
       </div>
     </div>
