@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-primary: #000000;
+    --color-bg-secondary: #ffffff;
+    --color-surface: #111827;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #000000;
+    --color-text-muted: #9ca3af;
+    --color-accent-success: #22c55e;
+    --color-accent-warning: #eab308;
+    --color-accent-danger: #ef4444;
+    --color-accent-hero: #000080;
+    --color-border: #374151;
+    --color-cta: #ffffff;
+
+    /* TYPOGRAPHY SYSTEM */
+    --font-heading: 'Archivo Black', sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1.125rem;
+    /* 18px */
+    --text-2xl: 1.5rem;
+    /* 24px */
+    --text-5xl: 3rem;
+    /* 48px */
+    --text-hero: 7.5rem;
+    /* 120px */
+
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+
+    --leading-tight: 0.9;
+    --leading-normal: 1.5;
+    --tracking-tighter: -0.05em;
+    --tracking-wide: 0.1em;
+
+    --hero-font: 'Archivo Black', sans-serif;
+    --accent-orange: #000080;
+    --transition-ease: cubic-bezier(0.7, 0, 0.3, 1);
+
+    /* SPACING */
+    --spacing-unit: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px;
+    --spacing-2xl: 120px;
+
+    --container-max-width: 1280px;
+    --section-padding-y: 100px;
+    --grid-gap: 24px;
+
+    /* BORDER & SHAPE SYSTEM */
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    --border-width: 1px;
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    /* SHADOW & DEPTH SYSTEM */
+    --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+    /* ANIMATION */
+    --transition-base: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* NEW XTENDED MOTION SPEC */
+    --transition-snappy: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-heavy: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+    --marquee-speed: 20s;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom classes since Tailwind V4 variables and extensions might need these */
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .bg-hero-glow {
+    background: radial-gradient(circle, rgba(0, 0, 128, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 0.3; }
+}
+
+/* Status pill pulsing green dot */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 6px #22c55e, 0 0 12px #22c55e88; opacity: 1; }
+  50%       { box-shadow: 0 0 3px #22c55e, 0 0  6px #22c55e44; opacity: 0.7; }
+}
+
+/* Button arrow — slides right and re-enters from left */
+@keyframes arrow-loop {
+  0%   { transform: translateX(0);    opacity: 1; }
+  49%  { transform: translateX(28px); opacity: 0; }
+  50%  { transform: translateX(-28px);opacity: 0; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-container {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee var(--marquee-speed) linear infinite;
+  /* Need container level rotation, so doing it at the wrapper level in React */
+}
+
+.marquee-reverse-container {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-reverse var(--marquee-speed) linear infinite;
+}
