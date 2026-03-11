@@ -970,7 +970,43 @@ const Earth = () => {
 };
 
 const ContactSection = () => {
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); };
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    if (!formRef.current) return;
+    const formData = new FormData(formRef.current);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/abhijeetsoren222@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      });
+
+      const result = await response.json();
+
+      if (result.success === "true" || response.ok) {
+        setStatus('success');
+        formRef.current.reset();
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
+  };
 
   return (
     <section id="contact" className="py-[120px] bg-white text-black">
@@ -1006,6 +1042,7 @@ const ContactSection = () => {
 
           {/* Right panel - Form */}
           <motion.form
+            ref={formRef}
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1018,27 +1055,27 @@ const ContactSection = () => {
 
             <div className="relative z-10 flex flex-col gap-2">
               <label className="text-[13px] font-bold text-gray-800">Full name</label>
-              <input type="text" placeholder="Manu Arora" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors placeholder:text-gray-400" />
+              <input type="text" name="name" required placeholder="Manu Arora" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors placeholder:text-gray-400" />
             </div>
 
             <div className="relative z-10 flex flex-col gap-2">
               <label className="text-[13px] font-bold text-gray-800">Email Address</label>
-              <input type="email" placeholder="support@aceternity.com" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors placeholder:text-gray-400" />
+              <input type="email" name="email" required placeholder="support@aceternity.com" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors placeholder:text-gray-400" />
             </div>
 
             <div className="relative z-10 flex flex-col gap-2">
               <label className="text-[13px] font-bold text-gray-800">Company</label>
-              <input type="text" placeholder="Aceternity Labs LLC" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors placeholder:text-gray-400" />
+              <input type="text" name="company" placeholder="Aceternity Labs LLC" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors placeholder:text-gray-400" />
             </div>
 
             <div className="relative z-10 flex flex-col gap-2">
               <label className="text-[13px] font-bold text-gray-800">Message</label>
-              <textarea rows={4} placeholder="Type your message here" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors resize-none placeholder:text-gray-400" />
+              <textarea rows={4} name="message" required placeholder="Type your message here" className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 text-black text-sm transition-colors resize-none placeholder:text-gray-400" />
             </div>
 
             <div className="relative z-10 mt-2">
-              <button type="submit" className="bg-black hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300">
-                Submit
+              <button disabled={status === 'loading'} type="submit" className="bg-black disabled:bg-gray-400 hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full sm:w-auto min-w-[120px]">
+                {status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent!' : status === 'error' ? 'Error. Try Again' : 'Submit'}
               </button>
             </div>
           </motion.form>
