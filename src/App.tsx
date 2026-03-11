@@ -1476,7 +1476,7 @@ const TransitionEngine = () => {
                 { value: '3+', label: 'Years Building' },
                 { value: '10+', label: 'Projects Delivered' },
                 { value: '6+', label: 'Core Domains' },
-                { value: '2026', label: 'B.Tech CSE, SOA' },
+                { value: '2027', label: 'B.Tech CSE, SOA' },
               ].map((stat, i) => (
                 <div key={i} className="p-6 bg-black text-white rounded-[20px] flex flex-col gap-2">
                   <div className="font-heading text-4xl text-[#000080]">{stat.value}</div>
