@@ -55,6 +55,10 @@
     --container-max-width: 1280px;
     --section-padding-y: 100px;
     --grid-gap: 24px;
+    
+    --project-card-width: 85vw;
+    --project-card-height: 60vh;
+    --project-track-padding: 7.5vw;
 
     /* BORDER & SHAPE SYSTEM */
     --radius-md: 12px;
@@ -81,6 +85,14 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --project-card-width: 40vw;
+    --project-card-height: 70vh;
+    --project-track-padding: 30vw;
   }
 }
 

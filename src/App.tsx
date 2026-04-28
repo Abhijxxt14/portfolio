@@ -1,4 +1,4 @@
-﻿import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import createGlobe from 'cobe';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Menu, X, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
@@ -143,7 +143,7 @@ const MarqueeTicker = ({ text, rotation, direction }: { text: string, rotation: 
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="font-heading text-4xl uppercase whitespace-nowrap flex"
+        className="font-heading text-2xl md:text-4xl uppercase whitespace-nowrap flex"
         animate={{ x: direction === 1 ? [0, -1000] : [-1000, 0] }}
         transition={{
           repeat: Infinity,
@@ -155,6 +155,84 @@ const MarqueeTicker = ({ text, rotation, direction }: { text: string, rotation: 
         <span>{text}</span>
       </motion.div>
     </div>
+  );
+};
+
+// ─── WORK EXPERIENCE ────────────────────────────────────────────────────────
+
+const WorkExperienceSection = () => {
+  return (
+    <section id="work-experience" className="w-full bg-[#f4f4f5] text-black pt-16 pb-32 px-6">
+      <div className="max-w-[1280px] mx-auto">
+        <div style={{ fontFamily: 'monospace', fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', fontWeight: 700, marginBottom: 20 }}>
+          ○ CURRENT ROLE
+        </div>
+        
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+          <div className="w-full lg:w-1/3">
+            <h2 className="font-heading text-5xl md:text-7xl uppercase text-black leading-[0.9] tracking-tight m-0 sticky top-32">
+              EXPERIENCE
+            </h2>
+          </div>
+          
+          <div className="w-full lg:w-2/3">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative border-2 border-black rounded-3xl p-8 md:p-12 overflow-hidden bg-white hover:-translate-y-2 transition-transform duration-500 will-change-transform shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+            >
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#000080]" />
+              
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 relative z-10">
+                <div>
+                  <h3 className="font-heading text-4xl md:text-5xl uppercase tracking-tighter text-black m-0 mb-2">
+                    Uxoria
+                  </h3>
+                  <div className="font-body text-xl md:text-2xl font-bold text-gray-800">
+                    Full Stack Developer
+                  </div>
+                </div>
+                
+                <div className="flex flex-col items-start md:items-end gap-3">
+                  <div className="flex items-center gap-2 px-4 py-2 border border-black/10 rounded-full text-[10px] font-bold tracking-widest uppercase bg-gray-50">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] shadow-[0_0_8px_rgba(34,197,94,0.6)]" style={{ animation: 'pulse-dot 2s ease-in-out infinite' }}></div>
+                    Present
+                  </div>
+                  <a 
+                    href="mailto:abhijeetsoren@uxoria.work" 
+                    className="flex items-center gap-2 text-sm font-bold text-[#000080] hover:text-black transition-colors group/link"
+                  >
+                    <Mail size={14} className="group-hover/link:scale-110 transition-transform" /> abhijeetsoren@uxoria.work
+                  </a>
+                </div>
+              </div>
+              
+              <div className="border-t border-black/10 pt-8 relative z-10">
+                <p className="font-body text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mb-8">
+                  Engineering scalable web applications and intuitive user interfaces. Leading full-stack development initiatives with a focus on performance, robust architecture, and premium user experiences tailored for modern digital studios.
+                </p>
+                
+                <div className="flex flex-wrap gap-3">
+                  {['React', 'TypeScript', 'Node.js', 'System Architecture', 'UI/UX'].map(tag => (
+                    <span key={tag} className="px-4 py-2 border-[1.5px] border-black/20 text-[10px] font-bold uppercase tracking-widest text-black rounded-md bg-white hover:bg-black hover:text-white transition-colors duration-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Background watermark */}
+              <div className="absolute -bottom-10 -right-10 text-[12rem] md:text-[16rem] font-heading text-black opacity-[0.02] pointer-events-none select-none leading-none tracking-tighter">
+                UX
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -375,8 +453,8 @@ const ProjectsSection = () => {
             alignItems: 'center',
             height: '100%',
             gap: '5vw',
-            paddingLeft: '30vw',
-            paddingRight: '30vw',
+            paddingLeft: 'var(--project-track-padding)',
+            paddingRight: 'var(--project-track-padding)',
             willChange: 'transform',
           }}
         >
@@ -387,8 +465,8 @@ const ProjectsSection = () => {
                 key={project.id}
                 style={{
                   flexShrink: 0,
-                  width: '40vw',
-                  height: '70vh',
+                  width: 'var(--project-card-width)',
+                  height: 'var(--project-card-height)',
                   background: '#ffffff',
                   border: isActive ? `2px solid ${project.accentColor}` : '1.5px solid #333',
                   borderRadius: 24,
@@ -432,7 +510,7 @@ const ProjectsSection = () => {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <div>
                       <div style={{ fontFamily: 'monospace', fontSize: '9px', letterSpacing: '0.2em', color: '#aaa', textTransform: 'uppercase', marginBottom: 6 }}>{project.category}</div>
-                      <h3 style={{ fontFamily: '"Archivo Black", sans-serif', fontSize: 'clamp(1.2rem,2.2vw,2rem)', fontWeight: 900, color: '#000', textTransform: 'uppercase', lineHeight: 0.95, letterSpacing: '-0.03em', margin: 0 }}>
+                      <h3 style={{ fontFamily: '"Archivo Black", sans-serif', fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 900, color: '#000', textTransform: 'uppercase', lineHeight: 0.95, letterSpacing: '-0.03em', margin: 0 }}>
                         {project.title}
                       </h3>
                     </div>
@@ -842,32 +920,34 @@ const ExperienceSection = () => {
             </div>
 
             {/* ── Split-screen layout ── */}
-            <div style={{ display: 'flex', height: '100%', paddingTop: 4, position: 'relative', zIndex: 1 }}>
+            <div className="flex flex-col md:flex-row h-full pt-1 relative z-10">
 
               {/* Left panel — Year + type */}
-              <div style={{ width: '33%', borderRight: '2px solid #000', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '44px 36px 40px' }}>
-                <div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '9px', letterSpacing: '0.22em', color: '#aaa', textTransform: 'uppercase', marginBottom: 14 }}>
-                    PERIOD
+              <div className="w-full md:w-1/3 border-b-2 md:border-b-0 md:border-r-2 border-black flex flex-col justify-between p-6 md:p-9 lg:p-11 flex-shrink-0">
+                <div className="flex justify-between md:flex-col md:justify-start items-center md:items-start h-full">
+                  <div>
+                    <div style={{ fontFamily: 'monospace', fontSize: '9px', letterSpacing: '0.22em', color: '#aaa', textTransform: 'uppercase', marginBottom: 8 }}>
+                      PERIOD
+                    </div>
+                    <div style={{ fontFamily: '"Archivo Black", sans-serif', fontSize: 'clamp(2.5rem, 6vw, 6.5rem)', fontWeight: 900, color: '#000', lineHeight: 0.85, letterSpacing: '-0.04em' }}>
+                      {exp.year}
+                    </div>
                   </div>
-                  <div style={{ fontFamily: '"Archivo Black", sans-serif', fontSize: 'clamp(3.5rem, 7vw, 6.5rem)', fontWeight: 900, color: '#000', lineHeight: 0.85, letterSpacing: '-0.04em' }}>
-                    {exp.year}
-                  </div>
-                </div>
 
-                <div>
-                  {/* Type badge */}
-                  <div style={{ display: 'inline-block', backgroundColor: '#000080', color: '#fff', fontFamily: '"Archivo Black", sans-serif', fontSize: '11px', letterSpacing: '0.16em', padding: '7px 14px', textTransform: 'uppercase', marginBottom: 12 }}>
-                    {exp.type}
-                  </div>
-                  <div style={{ fontFamily: '"Inter", sans-serif', fontSize: '11px', color: '#999', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700 }}>
-                    {exp.period}
-                  </div>
-                  {/* Orange ornament */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 24 }}>
-                    <div style={{ width: 24, height: 3, backgroundColor: '#000080' }} />
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#000080' }} />
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#000', border: '2px solid #000080' }} />
+                  <div className="text-right md:text-left md:mt-auto">
+                    {/* Type badge */}
+                    <div style={{ display: 'inline-block', backgroundColor: '#000080', color: '#fff', fontFamily: '"Archivo Black", sans-serif', fontSize: '10px', letterSpacing: '0.16em', padding: '6px 12px', textTransform: 'uppercase', marginBottom: 6 }}>
+                      {exp.type}
+                    </div>
+                    <div style={{ fontFamily: '"Inter", sans-serif', fontSize: '10px', color: '#999', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700 }}>
+                      {exp.period}
+                    </div>
+                    {/* Orange ornament */}
+                    <div className="hidden md:flex items-center gap-2 mt-6">
+                      <div style={{ width: 24, height: 3, backgroundColor: '#000080' }} />
+                      <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#000080' }} />
+                      <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#000', border: '2px solid #000080' }} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -884,15 +964,15 @@ const ExperienceSection = () => {
                 </div>
 
                 {/* Content wrapper */}
-                <div style={{ position: 'relative', zIndex: 1, padding: '44px 48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', overflowY: 'auto' }}>
+                <div className="relative z-10 p-6 md:p-10 lg:p-12 flex flex-col justify-between h-full overflow-y-auto">
                   <div>
                     <div style={{ fontFamily: '"Inter", sans-serif', fontSize: '10px', color: '#000080', letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 800, marginBottom: 18 }}>
                       {exp.org}
                     </div>
-                    <h3 style={{ fontFamily: '"Archivo Black", sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.8rem)', fontWeight: 900, color: '#000', textTransform: 'uppercase', lineHeight: 1.0, letterSpacing: '-0.03em', margin: 0, marginBottom: 28, whiteSpace: 'pre-line' }}>
+                    <h3 style={{ fontFamily: '"Archivo Black", sans-serif', fontSize: 'clamp(1.4rem, 4vw, 2.8rem)', fontWeight: 900, color: '#000', textTransform: 'uppercase', lineHeight: 1.0, letterSpacing: '-0.03em', margin: 0, marginBottom: 16, whiteSpace: 'pre-line' }}>
                       {exp.title}
                     </h3>
-                    <p style={{ fontFamily: '"Inter", sans-serif', fontSize: '15px', color: '#555', lineHeight: 1.75, maxWidth: 520, margin: 0 }}>
+                    <p style={{ fontFamily: '"Inter", sans-serif', fontSize: '14px', color: '#555', lineHeight: 1.6, maxWidth: 520, margin: 0, marginBottom: 20 }}>
                       {exp.description}
                     </p>
                   </div>
@@ -960,7 +1040,7 @@ const Earth = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[360px] aspect-square relative opacity-80 -mt-6 md:-mt-12 overflow-hidden flex items-center justify-center">
+    <div className="w-full max-w-[280px] md:max-w-[360px] aspect-square relative opacity-80 -mt-6 md:-mt-12 overflow-hidden flex items-center justify-center">
       <canvas
         ref={canvasRef}
         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -1035,7 +1115,7 @@ const ContactSection = () => {
 
 
             {/* Globe */}
-            <div className="mt-4 md:-mt-4 w-full flex justify-start -ml-8 pointer-events-none select-none">
+            <div className="mt-0 md:-mt-4 w-full flex justify-center md:justify-start md:-ml-8 pointer-events-none select-none">
               <Earth />
             </div>
           </motion.div>
@@ -1104,7 +1184,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <span className="text-xs font-bold uppercase tracking-widest text-gray-600">© 2026 ABHIJEET SOREN. DESIGNED AND BUILT WITH INTENT.</span>
+        <span className="text-xs font-bold uppercase tracking-widest text-gray-600 text-center md:text-left">© 2026 ABHIJEET SOREN. DESIGNED AND BUILT WITH INTENT.</span>
         <div className="flex gap-4">
           <a href="https://github.com/Abhijxxt14" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-white transition-colors"><Github size={16} /></a>
           <a href="https://linkedin.com/in/abhijeet-soren-a7654b2b5" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-white transition-colors"><Linkedin size={16} /></a>
@@ -1369,7 +1449,7 @@ const TransitionEngine = () => {
               ref={heroTextRef}
               className="font-heading m-0 uppercase drop-shadow-2xl leading-[0.8] text-center text-white"
               style={{
-                fontSize: '10vw',
+                fontSize: 'clamp(3.5rem, 14vw, 12rem)',
                 letterSpacing: '-0.02em',
                 zIndex: 10,
                 transform: `translate(${heroMouse.x * -14}px, ${heroMouse.y * -8}px)`,
@@ -1490,6 +1570,7 @@ const TransitionEngine = () => {
         <Marquees />
         {isTransitioned && (
           <>
+            <WorkExperienceSection />
             <ProjectsSection />
             <SkillsSection />
             <ExperienceSection />
